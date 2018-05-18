@@ -1,16 +1,16 @@
 //array containing each studdent-item element
-const masterList = [...document.querySelectorAll(".student-item")];
+const studentList = [...document.querySelectorAll(".student-item")];
 //static number of students to be shown per totalPages
 const maxPerPage = 10;
 //number of pages based on number of student-item elements
-const totalPages = Math.round(masterList.length / maxPerPage);
+const totalPages = Math.round(studentList.length / maxPerPage);
 //keeps count of page number
-let pageNum = 1;
+let currentPage = 1;
 
 //hides full student list
-function hideList(masterList) {
-  for (let i = 0; i < masterList.length; i += 1) {
-    masterList[i].style.display = "none";
+function hideList(studentList) {
+  for (let i = 0; i < studentList.length; i += 1) {
+    studentList[i].style.display = "none";
   }
 }
 
@@ -35,13 +35,13 @@ function createButtons(totalPages) {
 
 createButtons(totalPages);
 
-hideList(masterList);
+hideList(studentList);
 
-// function createFirstPage(masterList, totalPages, numPerPage) {
-//   for (let i = 0; i < masterList.length; i += 1) {
+// function createFirstPage(studentList, totalPages, numPerPage) {
+//   for (let i = 0; i < studentList.length; i += 1) {
 //     if (i >= 10) {
-//       masterList[i].style.display = "none";
+//       studentList[i].style.display = "none";
 //     }
 //   }
 // }
-// createFirstPage(masterList, totalPages, numPerPage);
+// createFirstPage(studentList, totalPages, numPerPage);
