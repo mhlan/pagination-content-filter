@@ -14,7 +14,7 @@ function hideList(studentList) {
   }
 }
 
-//generates buttons
+//generates li
 function createButtons(totalPages) {
   let page = document.querySelector(".page");
   let div = document.createElement("div");
@@ -34,6 +34,7 @@ function createButtons(totalPages) {
 }
 
 //displays list of students corresponding to button selected
+//ceiling and floor variables act to determine range of student-list items
 function pagination(studentList, currentPage, maxPerPage) {
   let ceiling = currentPage * maxPerPage;
   let floor = ceiling - maxPerPage;
@@ -44,11 +45,25 @@ function pagination(studentList, currentPage, maxPerPage) {
   }
 }
 
+function makeActive(currentPage, totalPages) {
+  let div = document.querySelector(".pagination");
+  let ul = div.querySelector("ul");
+  let li = ul.childNodes;
+  li = [...li];
+  for (let i = 0; i <= totalPages; i++) {
+    if (i === currentPage - 1) {
+      li[i].firstChild.className = "active";
+    }
+  }
+}
+
 hideList(studentList);
 
 pagination(studentList, currentPage, maxPerPage);
 
 createButtons(totalPages);
+
+makeActive(currentPage, totalPages);
 
 //create function to toggle active class to corresponding button
 
