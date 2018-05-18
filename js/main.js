@@ -33,15 +33,19 @@ function createButtons(totalPages) {
   page.appendChild(div);
 }
 
-createButtons(totalPages);
+//displays list of students corresponding to button selected
+function pagination(studentList, currentPage, maxPerPage) {
+  let ceiling = currentPage * maxPerPage;
+  let floor = ceiling - maxPerPage;
+  for (let i = 0; i < studentList.length; i++) {
+    if (i < ceiling && i >= floor) {
+      studentList[i].style.display = "block";
+    }
+  }
+}
 
 hideList(studentList);
 
-// function createFirstPage(studentList, totalPages, numPerPage) {
-//   for (let i = 0; i < studentList.length; i += 1) {
-//     if (i >= 10) {
-//       studentList[i].style.display = "none";
-//     }
-//   }
-// }
-// createFirstPage(studentList, totalPages, numPerPage);
+pagination(studentList, currentPage, maxPerPage);
+
+createButtons(totalPages);
