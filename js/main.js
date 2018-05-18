@@ -1,8 +1,8 @@
-//create array containing each studdent-item element
+//array containing each studdent-item element
 const masterList = [...document.querySelectorAll(".student-item")];
 //static number of students to be shown per totalPages
 const maxPerPage = 10;
-//create number of pages based on number of student-item elements
+//number of pages based on number of student-item elements
 const totalPages = Math.round(masterList.length / maxPerPage);
 //keeps count of page number
 let pageNum = 0;
@@ -14,21 +14,26 @@ function hideList(masterList) {
   }
 }
 
-function createPages(totalPages) {
+//generates buttons
+function createButtons(totalPages) {
+  let page = document.querySelector(".page");
   let div = document.createElement("div");
   div.className = "pagination";
-  let ul = document.createElement("UL");
+  let ul = document.createElement("ul");
   div.appendChild(ul);
   for (let i = 1; i <= totalPages + 1; i++) {
-    let li = document.createElement("LI");
+    let li = document.createElement("li");
     ul.appendChild(li);
-    var t = document.createTextNode(i);
-    li.appendChild(t);
+    let a = document.createElement("a");
+    a.setAttribute("href", "#");
+    let count = document.createTextNode(i);
+    a.appendChild(count);
+    li.appendChild(a);
   }
-  document.body.appendChild(div);
+  page.appendChild(div);
 }
 
-createPages(totalPages);
+createButtons(totalPages);
 
 hideList(masterList);
 
