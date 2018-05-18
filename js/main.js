@@ -49,3 +49,8 @@ hideList(studentList);
 pagination(studentList, currentPage, maxPerPage);
 
 createButtons(totalPages);
+
+//create function to toggle active class to corresponding button
+
+//event listener to change page number based on click, which should change student list
+//if old student list items to become hidden, and else statement to pagination to change display to hidden
