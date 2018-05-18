@@ -14,7 +14,7 @@ function hideList(studentList) {
   }
 }
 
-//generates li
+//generates page buttons with corresponding attributes
 function createButtons(totalPages) {
   let page = document.querySelector(".page");
   let div = document.createElement("div");
@@ -26,6 +26,7 @@ function createButtons(totalPages) {
     ul.appendChild(li);
     let a = document.createElement("a");
     a.setAttribute("href", "#");
+    a.className = "page-button";
     let count = document.createTextNode(i);
     a.appendChild(count);
     li.appendChild(a);
@@ -45,6 +46,7 @@ function pagination(studentList, currentPage, maxPerPage) {
   }
 }
 
+//sets current page number to an active state
 function makeActive(currentPage, totalPages) {
   let div = document.querySelector(".pagination");
   let ul = div.querySelector("ul");
@@ -64,8 +66,6 @@ pagination(studentList, currentPage, maxPerPage);
 createButtons(totalPages);
 
 makeActive(currentPage, totalPages);
-
-//create function to toggle active class to corresponding button
 
 //event listener to change page number based on click, which should change student list
 //if old student list items to become hidden, and else statement to pagination to change display to hidden
