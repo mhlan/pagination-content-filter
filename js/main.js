@@ -5,7 +5,7 @@ const maxPerPage = 10;
 //number of pages based on number of student-item elements
 const totalPages = Math.round(masterList.length / maxPerPage);
 //keeps count of page number
-let pageNum = 0;
+let pageNum = 1;
 
 //hides full student list
 function hideList(masterList) {
