@@ -42,6 +42,8 @@ function pagination(studentList, currentPage, maxPerPage) {
   for (let i = 0; i < studentList.length; i++) {
     if (i < ceiling && i >= floor) {
       studentList[i].style.display = "block";
+    } else {
+      studentList[i].style.display = "none";
     }
   }
 }
@@ -55,6 +57,8 @@ function makeActive(currentPage, totalPages) {
   for (let i = 0; i <= totalPages; i++) {
     if (i === currentPage - 1) {
       li[i].firstChild.className = "active";
+    } else {
+      li[i].firstChild.className = "page-button";
     }
   }
 }
@@ -69,3 +73,13 @@ makeActive(currentPage, totalPages);
 
 //event listener to change page number based on click, which should change student list
 //if old student list items to become hidden, and else statement to pagination to change display to hidden
+
+const paginationUl = document.querySelector(".pagination").querySelector("ul");
+
+paginationUl.addEventListener("click", event => {
+  if (event.target.className === "page-button") {
+    currentPage = event.target.innerHTML;
+    pagination(studentList, currentPage, maxPerPage);
+    makeActive(currentPage, totalPages);
+  }
+});
