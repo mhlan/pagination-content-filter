@@ -1,5 +1,5 @@
 //array containing each studdent-item element
-const studentList = [...document.querySelectorAll(".student-item")];
+const studentList = document.querySelectorAll(".student-item");
 //static number of students to be shown per totalPages
 const maxPerPage = 10;
 //number of pages based on number of student-item elements
@@ -14,7 +14,7 @@ function hideList(studentList) {
   }
 }
 
-//generates page buttons with corresponding attributes
+//generates page number buttons with corresponding attributes
 function createButtons(totalPages) {
   let page = document.querySelector(".page");
   let div = document.createElement("div");
@@ -32,6 +32,20 @@ function createButtons(totalPages) {
     li.appendChild(a);
   }
   page.appendChild(div);
+}
+
+//generates search bar
+function createSearch() {
+  let header = document.querySelector(".page-header");
+  let div = document.createElement("div");
+  div.className = "student-search";
+  let input = document.createElement("input");
+  input.setAttribute("placeholder", "Search for students...");
+  div.appendChild(input);
+  let button = document.createElement("button");
+  button.innerText = "Search";
+  div.appendChild(button);
+  header.appendChild(div);
 }
 
 //displays list of students corresponding to button selected
@@ -53,7 +67,6 @@ function makeActive(currentPage, totalPages) {
   let div = document.querySelector(".pagination");
   let ul = div.querySelector("ul");
   let li = ul.childNodes;
-  li = [...li];
   for (let i = 0; i <= totalPages; i++) {
     if (i === currentPage - 1) {
       li[i].firstChild.className = "active";
@@ -70,6 +83,8 @@ pagination(studentList, currentPage, maxPerPage);
 createButtons(totalPages);
 
 makeActive(currentPage, totalPages);
+
+createSearch();
 
 //event listener to change page number based on click, which should change student list
 //if old student list items to become hidden, and else statement to pagination to change display to hidden
