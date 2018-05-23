@@ -86,12 +86,9 @@ makeActive(currentPage, totalPages);
 
 // createSearch();
 
-//event listener to change page number based on click, which should change student list
-//if old student list items to become hidden, and else statement to pagination to change display to hidden
-
 const paginationUl = document.querySelector(".pagination").querySelector("ul");
-
-paginationUl.addEventListener("click", () => {
+//triggers pagination and makeActive functions upon clicking of page buttons
+paginationUl.addEventListener("click", event => {
   if (event.target.className === "page-button") {
     currentPage = event.target.innerHTML;
     pagination(studentList, currentPage, maxPerPage);
