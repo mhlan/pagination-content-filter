@@ -34,19 +34,19 @@ function createButtons(totalPages) {
   page.appendChild(div);
 }
 
-//generates search bar
-function createSearch() {
-  let header = document.querySelector(".page-header");
-  let div = document.createElement("div");
-  div.className = "student-search";
-  let input = document.createElement("input");
-  input.setAttribute("placeholder", "Search for students...");
-  div.appendChild(input);
-  let button = document.createElement("button");
-  button.innerText = "Search";
-  div.appendChild(button);
-  header.appendChild(div);
-}
+// //generates search bar
+// function createSearch() {
+//   let header = document.querySelector(".page-header");
+//   let div = document.createElement("div");
+//   div.className = "student-search";
+//   let input = document.createElement("input");
+//   input.setAttribute("placeholder", "Search for students...");
+//   div.appendChild(input);
+//   let button = document.createElement("button");
+//   button.innerText = "Search";
+//   div.appendChild(button);
+//   header.appendChild(div);
+// }
 
 //displays list of students corresponding to button selected
 //ceiling and floor variables act to determine range of student-list items
@@ -84,7 +84,7 @@ createButtons(totalPages);
 
 makeActive(currentPage, totalPages);
 
-createSearch();
+// createSearch();
 
 //event listener to change page number based on click, which should change student list
 //if old student list items to become hidden, and else statement to pagination to change display to hidden
@@ -99,18 +99,29 @@ paginationUl.addEventListener("click", () => {
   }
 });
 
-const searchBtn = document.querySelector("button");
-const searchField = document.querySelector("input");
+// const searchBtn = document.querySelector("button");
+// const searchField = document.querySelector("input");
 
-searchBtn.addEventListener("click", () => {
-  let studentName = document.querySelectorAll("h3");
-  let search = searchField.value.toUpperCase();
-  for (let i = 0; i < studentList.length; i++) {
-    let names = studentName[i].innerText.toUpperCase();
-    if (names.indexOf(search) >= 0) {
-      studentList[i].style.display = "block";
-    } else {
-      studentList[i].style.display = "none";
-    }
-  }
-});
+// searchBtn.addEventListener("click", () => {
+//   let studentName = document.querySelectorAll("h3");
+//   let search = searchField.value.toUpperCase();
+//   let count = 0;
+//   for (let i = 0; i < studentList.length; i++) {
+//     let names = studentName[i].innerText.toUpperCase();
+//     if (names.indexOf(search) >= 0) {
+//       studentList[i].style.display = "block";
+//       count++;
+//     } else {
+//       studentList[i].style.display = "none";
+//     }
+//   }
+//   if (count === 0) {
+//     alert("No matches.");
+//     pagination(studentList, currentPage, maxPerPage);
+//   } else {
+//     count = Math.round(count / maxPerPage);
+//     document.querySelector(".pagination").style.display = "none";
+//     createButtons(count);
+//     makeActive(currentPage, totalPages);
+//   }
+// });
