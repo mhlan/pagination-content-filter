@@ -91,10 +91,26 @@ createSearch();
 
 const paginationUl = document.querySelector(".pagination").querySelector("ul");
 
-paginationUl.addEventListener("click", event => {
+paginationUl.addEventListener("click", () => {
   if (event.target.className === "page-button") {
     currentPage = event.target.innerHTML;
     pagination(studentList, currentPage, maxPerPage);
     makeActive(currentPage, totalPages);
+  }
+});
+
+const searchBtn = document.querySelector("button");
+const searchField = document.querySelector("input");
+
+searchBtn.addEventListener("click", () => {
+  let studentName = document.querySelectorAll("h3");
+  let search = searchField.value.toUpperCase();
+  for (let i = 0; i < studentList.length; i++) {
+    let names = studentName[i].innerText.toUpperCase();
+    if (names.indexOf(search) >= 0) {
+      studentList[i].style.display = "block";
+    } else {
+      studentList[i].style.display = "none";
+    }
   }
 });
